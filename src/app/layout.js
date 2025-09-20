@@ -13,13 +13,13 @@ export const metadata = {
   title: "ABDULLAH AKMAL",
   description: "My portfolio",
   icons: {
-    icon: "/favicon.png", // or "/favicon.png"
+    icon: "/favicon.png",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark"> {/* ✅ Force dark mode */}
       <body className={`${inter.className} w-full relative`}>
         <div
           className="absolute inset-0 z-0 pointer-events-none"
