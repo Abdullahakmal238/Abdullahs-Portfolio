@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 import { motion } from "framer-motion";
 import { Mail, Phone, Send, Facebook, Linkedin, Github } from "lucide-react";
@@ -41,7 +40,7 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.message || !form.name || !form.email) {
       toast.error("Please fill in all fields.");
@@ -49,30 +48,34 @@ export default function Contact() {
     }
     setLoading(true);
 
-    emailjs
-      .send(
-        "service_caqbaoc",
-        "template_6yip0er",
-        {
-          from_name: form.name,
-          to_name: "ABDULLAH AKMAL",
-          from_email: form.email,
-          to_email: "abdullahakmal238@gmail.com",
-          message: form.message,
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        "ySvkxnpIiUjj_HB7R"
-      )
-      .then(() => {
+        body: JSON.stringify({
+          access_key: "9e8538b0-8436-40da-93ef-c77865ecbe47", // 🔑 Replace with your Web3Forms key
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
         toast.success("Your message has been sent successfully!");
         setForm({ name: "", email: "", message: "" });
-      })
-      .catch((error) => {
-        console.error("EMAILJS ERROR:", error);
+      } else {
         toast.error("Sorry, failed to send your message.");
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      }
+    } catch (error) {
+      console.error("Web3Forms Error:", error);
+      toast.error("Something went wrong. Try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -82,20 +85,10 @@ export default function Contact() {
     >
       <div className="absolute inset-0 backdrop-blur-md rounded-3xl -z-10" />
 
-      <Toaster
-        position="top-center"
-        toastOptions={{
-          style: {
-            background: "#e5e7eb",
-            color: "#1f2937",
-            boxShadow: "5px 5px 10px #1e293b, -5px -5px 10px #334155",
-          },
-          success: { iconTheme: { primary: "#16a34a", secondary: "#f0fdf4" } },
-          error: { iconTheme: { primary: "#dc2626", secondary: "#fef2f2" } },
-        }}
-      />
+      <Toaster position="top-center" />
 
       <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-start">
+        {/* Left Side */}
         <motion.div
           className="p-8 rounded-3xl space-y-6 bg-gray-900/50 border border-gray-700"
           initial={{ opacity: 0, x: -50 }}
@@ -145,6 +138,7 @@ export default function Contact() {
           </div>
         </motion.div>
 
+        {/* Right Side (Form) */}
         <motion.div
           className="p-8 rounded-3xl bg-gray-900/50 border border-gray-700"
           initial={{ opacity: 0, x: 50 }}
