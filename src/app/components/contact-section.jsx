@@ -22,11 +22,11 @@ const FormField = ({
       onChange={onChange}
       required={required}
       placeholder=" "
-      className="block w-full px-4 py-3 rounded-xl appearance-none peer focus:outline-none focus:ring-0 shadow-inner neumorphic-inset transition-shadow duration-300"
+      className="block w-full px-4 py-3 text-white rounded-xl appearance-none peer focus:outline-none focus:ring-0 shadow-inner neumorphic-inset transition-shadow duration-300 bg-transparent border-none"
     />
     <label
       htmlFor={name}
-      className="absolute text-violet-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+      className="absolute text-white duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
     >
       {label}
     </label>
@@ -112,11 +112,11 @@ export default function Contact() {
 
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <Mail className="w-6 h-6 text-violet-400" />
+              <Mail className="w-6 h-6 text-white" />
               <span className="text-slate-200">abdullahakmal238@gmail.com</span>
             </div>
             <div className="flex items-center space-x-3">
-              <Phone className="w-6 h-6 text-violet-400" />
+              <Phone className="w-6 h-6 text-white" />
               <span className="text-slate-200">+92 3224768248</span>
             </div>
             <div className="flex space-x-4 mt-6">
@@ -125,21 +125,21 @@ export default function Contact() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Facebook className="w-7 h-7 text-violet-400 hover:text-violet-300" />
+                <Facebook className="w-7 h-7 text-white hover:text-gray-300" />
               </a>
               <a
                 href="https://www.linkedin.com/in/abdullahakmal238/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <Linkedin className="w-7 h-7 text-violet-400 hover:text-violet-300" />
+                <Linkedin className="w-7 h-7 text-white hover:text-gray-300" />
               </a>
               <a
                 href="https://github.com/Abdullahakmal238"
                 target="_blank"
                 rel="noreferrer"
               >
-                <Github className="w-7 h-7 text-violet-400 hover:text-violet-300" />
+                <Github className="w-7 h-7 text-white hover:text-gray-300" />
               </a>
             </div>
           </div>
@@ -153,7 +153,7 @@ export default function Contact() {
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="border rounded-2xl border-violet-700">
+              <div className="border rounded-2xl border-white">
                 <FormField
                   name="name"
                   label="Your Name"
@@ -162,7 +162,7 @@ export default function Contact() {
                   required
                 />
               </div>
-              <div className="border rounded-2xl border-violet-700">
+              <div className="border rounded-2xl border-white">
                 <FormField
                   name="email"
                   label="Your Email"
@@ -183,11 +183,11 @@ export default function Contact() {
                 required
                 rows={6}
                 placeholder=" "
-                className="block w-full px-4 py-3 text-violet-800 rounded-xl appearance-none peer focus:outline-none focus:ring-0 resize-none shadow-inner border transition-shadow duration-300"
+                className="block w-full px-4 py-3 text-white rounded-xl appearance-none peer focus:outline-none focus:ring-0 resize-none shadow-inner border border-white transition-shadow duration-300 bg-transparent"
               ></textarea>
               <label
                 htmlFor="message"
-                className="absolute text-violet-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+                className="absolute text-white duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
               >
                 Write your valuable message here...
               </label>
@@ -196,11 +196,11 @@ export default function Contact() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 rounded-xl font-bold text-lg text-violet-800 border disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+              className="w-full py-4 rounded-xl font-bold text-lg text-white border border-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
             >
               {loading ? (
                 <div className="flex items-center justify-center space-x-2">
-                  <div className="w-6 h-6 border-2 border-violet-500 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   <span>Sending...</span>
                 </div>
               ) : (
