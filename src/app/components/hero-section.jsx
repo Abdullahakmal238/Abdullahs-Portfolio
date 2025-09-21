@@ -125,7 +125,7 @@ export default function HeroSection() {
           Welcome to my universe
         </div>
 
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white-800 dark:text-gray-200">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white dark:text-gray-200">
           Hi, I am
         </h1>
 
